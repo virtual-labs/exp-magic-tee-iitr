@@ -1,0 +1,827 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  
+
+  
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/knockout-2.2.1.js"></script>
+ <!-- Resources -->
+ <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+ <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+ <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <script src="js/sevenSeg.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script>
+    am4core.ready(function() {
+    
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+    
+    // create chart
+    var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+    chart.hiddenState.properties.opacity = 0;
+    
+    var axis = chart.xAxes.push(new am4charts.ValueAxis());
+    
+    axis.strictMinMax = false
+    axis.renderer.inside = true;
+    //axis.renderer.ticks.template.inside = true;
+    //axis.stroke = chart.colors.getIndex(3);
+    axis.renderer.radius = am4core.percent(160);
+    //axis.renderer.radius = 80;
+    axis.renderer.line.strokeOpacity = 1;
+    axis.renderer.line.strokeWidth = 1;
+    axis.renderer.line.stroke = chart.colors.getIndex(0);
+    axis.renderer.ticks.template.disabled = true
+    axis.renderer.ticks.template.stroke = chart.colors.getIndex(0);
+    axis.renderer.labels.template.radius = 2;
+    axis.renderer.ticks.template.strokeOpacity = 1;
+    axis.renderer.grid.template.disabled = true;
+    axis.renderer.ticks.template.length = 10;
+    axis.hiddenState.properties.opacity = 1;
+    axis.hiddenState.properties.visible = true;
+    axis.setStateOnChildren = true;
+    axis.renderer.hiddenState.properties.endAngle = 180;
+ 
+ 
+    var axis3 = chart.xAxes.push(new am4charts.ValueAxis());
+   
+    axis3.strictMinMax = false;
+    axis3.renderer.inside = true;
+    //axis.renderer.ticks.template.inside = true;
+    //axis.stroke = chart.colors.getIndex(3);
+    axis3.renderer.radius = am4core.percent(200);
+    //axis.renderer.radius = 80;
+    axis3.renderer.line.strokeOpacity = 1;
+    axis3.renderer.line.strokeWidth = 1;
+    axis3.renderer.line.stroke = chart.colors.getIndex(0);
+    axis3.renderer.ticks.template.disabled = false
+    axis3.renderer.ticks.template.stroke = chart.colors.getIndex(0);
+    axis3.renderer.labels.template.radius = 2;
+    axis3.renderer.ticks.template.strokeOpacity = 1;
+    axis3.renderer.grid.template.disabled = true;
+    axis3.renderer.ticks.template.length = 10;
+    axis3.hiddenState.properties.opacity = 1;
+    axis3.hiddenState.properties.visible = true;
+    axis3.setStateOnChildren = true;
+    axis3.renderer.hiddenState.properties.endAngle = 180;
+    
+    var axis2 = chart.xAxes.push(new am4charts.ValueAxis());
+    axis2.min = 0;
+     axis2.max = 70;
+    
+    axis2.strictMinMax = true;
+    
+    axis2.renderer.radius = am4core.percent(240);
+    axis2.renderer.line.strokeOpacity = 1;
+    axis2.renderer.line.strokeWidth = 1;
+    axis2.renderer.line.stroke = chart.colors.getIndex(1);
+    axis2.renderer.ticks.template.stroke = chart.colors.getIndex(1);
+    axis2.renderer.labels.template.stroke = chart.colors.getIndex(1);
+    axis2.renderer.labels.template.radius = 2;
+    axis2.renderer.labels.template.fontSize = 8;
+    axis2.renderer.labels.template.strokeWidth = 0.3;
+    axis2.renderer.minGridDistance = 20;
+    
+    axis2.renderer.ticks.template.disabled = false
+    axis2.renderer.ticks.template.strokeOpacity = 1;
+    axis2.renderer.grid.template.disabled = true;
+    axis2.renderer.ticks.template.length = 3;
+    axis2.hiddenState.properties.opacity = 1;
+    axis2.hiddenState.properties.visible = true;
+    axis2.setStateOnChildren = true;
+    axis2.renderer.hiddenState.properties.endAngle = 180;
+    
+    
+    
+    var hand2 = chart.hands.push(new am4charts.ClockHand());
+    hand2.fill = axis2.renderer.line.stroke;
+    hand2.stroke = axis2.renderer.line.stroke;
+    hand2.axis = axis2;
+    hand2.pin.radius = 1;
+    hand2.startWidth = 1;
+ 
+   
+  
+ 
+   
+    setInterval(function() {
+   
+   hand2.showValue( d, 1, am4core.ease.cubicOut);
+   
+ }, 1000);
+   
+ 
+             
+    
+    });  // end am4core.ready()
+    </script>
+  <script>
+    var gtemp="";
+    function reset() {
+      window.location.reload()
+    }
+    function shows()
+    {
+      Swal.fire({
+                        backdrop:false,
+                       target: '#rom',
+                       position:'center',
+                       
+                        customClass: {
+                          container: 'position-absolute',
+                          popup:"swal2-popup"
+                        },
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                            popup: 'animate__animated animate__fadeOut'
+                          },
+                        html: '<div style="font-size:16px;">Setup for recording P3 values</div>',
+                        imageUrl: "images/setup3.jpeg",
+                        imageWidth: 450,
+                        imageHeight: 200,
+                        imageAlt: "Setup",
+                        });
+    }
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+
+      ev.dataTransfer.setData("text", ev.target.id);
+      gtemp=ev.target.id+"s"
+      
+      
+
+    }
+    function appear() {
+      document.getElementById("stand").style.visibility = "visible";
+      document.getElementById("images").style.visibility = "visible";
+      document.getElementById("images").style.opacity = "1";
+      document.getElementById("powersupply").style.visibility = "visible";
+      document.getElementById("gg").style.visibility = "visible";
+      document.getElementById("gg").style.opacity = "1";
+      document.getElementById("space3").style.visibility = "visible";
+      document.getElementById("exph").style.marginLeft = "243px";
+      document.getElementById("exph").style.width = "1014px";
+      document.getElementById("chartdiv").style.visibility= "visible"
+    }
+    function hov() {
+      document.getElementById("container").style.visibility = "visible";
+     
+    }
+    function hide(){
+        
+        document.getElementById("container").style.visibility = "hidden";
+      
+      }
+    async function sleeps(milli_seconds = 2000) {return new Promise(done => setTimeout(() => done(), milli_seconds));}
+
+   async function calculate() {
+      var vv1= localStorage.getItem("V1");
+      var vv2= localStorage.getItem("V2");  
+      var vv3 = document.getElementById('V4').value;
+          
+document.getElementById("coupling").innerText = vv1-vv3;
+document.getElementById("directivity").innerText = vv1-vv2;
+await sleeps(500);
+Swal.fire({
+  backdrop:false,
+ target: '#rom',
+ position:'center',
+ width:'480px',
+  customClass: {
+    container: 'position-absolute',
+    popup:"swal2-popup"
+  },
+   showClass: {
+        popup: 'animate__animated animate__zoomIn'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__zoomOut'
+      },
+  html:'Click on <b style="color:blue">Print</b> button to print your current page (readings and connections).',      
+  icon:'info',
+  });
+  document.getElementById("print").disabled= false;
+  document.getElementById("ccccc").disabled=true;
+    }
+
+    
+     function drop(ev, target) {
+      ev.preventDefault();
+      var da = target;
+      
+      if ($(da).children()[0] != undefined) {
+        console.log($(da).children()[0])
+        console.log(ev)
+        document.getElementById('gg').appendChild($(da).children()[0].getData("text/html"))
+      }
+      $(da).empty();
+
+      var data = ev.dataTransfer.getData("text");
+      if(data=="drag0" || data=="drag9")
+      {
+        if (ev.target.id == "div0" || ev.target.id == "div9")
+  { 
+    console.log(document.getElementById(data).getAttribute('data-div'));
+    console.log(ev.target.id);
+    target.appendChild(document.getElementById(data));
+      document.getElementById(gtemp).style.display="inline-block";
+      var op=data+"s";
+      document.getElementById(op).style.opacity=0.5;
+      document.getElementById(op).draggable=false;
+    return;
+  }
+  else 
+  {
+    Swal.fire({
+                        backdrop:false,
+                       target: '#rom',
+                       position:'center',
+                       width:'480px',
+                        customClass: {
+                          container: 'position-absolute',
+                          popup:"swal2-popup"
+                        },
+                        html:'Incorrect component placement. Click the <b>Experiment setup</b> button to view the setup.',
+                        title:'Please try again!!',     
+                        icon:'error',
+                        });
+
+return; 
+  }
+      }
+   else  if(data != "drag0" || data != "drag9")
+   {
+      if (ev.target.id != document.getElementById(data).getAttribute('data-div'))
+  { 
+    Swal.fire({
+                        backdrop:false,
+                       target: '#rom',
+                       position:'center',
+                       width:'480px',
+                        customClass: {
+                          container: 'position-absolute',
+                          popup:"swal2-popup"
+                        },
+                        html:'Incorrect component placement. Click the <b>Experiment setup</b> button to view the setup.',
+                        title:'Please try again!!',     
+                        icon:'error',
+                        });
+                       
+return;
+
+  }}
+      target.appendChild(document.getElementById(data));
+      document.getElementById(gtemp).style.display="block";
+      if($("#drag6").parents("#div6").length == 1 && ($("#drag0").parents("#div0").length == 1 || $("#drag9").parents("#div0").length == 1 ))
+      {
+        document.getElementById("con").style.visibility = "visible";
+        document.getElementById("check11").disabled= false;
+      }
+      
+      var op=data+"s";
+      document.getElementById(op).style.opacity=0.5;
+      document.getElementById(op).draggable=false;
+    }
+   
+
+  </script>
+</head>
+<link rel="stylesheet" href="css/task10.css">
+
+<body >
+  <div id="box">
+<div class="mainn">
+  <table>
+    
+      
+    </tr>
+<tr>
+
+  <td>
+   <div id="exph">
+    <h2 id="expm">  To Study and Determine the Scattering Parameters of Magic Tee. &nbsp; &nbsp; &nbsp; &nbsp;   <button ondblclick="hide()" onclick="hov()" id="help">INSTRUCTIONS</button> </h2>
+    </div>
+    <div id="container">
+      <div id="carouselContent" class="carousel" data-interval="false">
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active ">
+              Click on Components button for components to pop up.
+          </div>
+          <div class="carousel-item ">
+              
+              Click on the component, drag them to the test bench and place them as shown in the experiment setup.
+          </div>
+          <div class="carousel-item ">
+              
+            After placing the components on the test bench, connect the wires accordingly.
+        </div>
+        <div class="carousel-item ">
+              
+         To check your connections  click on "Check Connections" button.
+      </div>
+      <div class="carousel-item ">
+              
+       If your connections are correct then you may continue to take down the readings, if not then click on "Reset Button" and try it again.
+     </div>
+     
+    <div class="carousel-item ">
+              
+      Toggle the switch button and observe the readings on VSWR Meter for same value of Reflector Voltage.
+     </div>
+     <div class="carousel-item ">
+              
+     Now the reading observed will be different as we are taking output from port 4 of Magic Tee.
+     </div>
+     
+     <div class="carousel-item ">
+              
+      Note down the readings in input box for P3.
+     </div>
+     <div class="carousel-item ">
+              
+      Click on "Add to table" button to record the readings for P3.
+     </div>
+     <div class="carousel-item ">
+              
+      Click on "Calculate" button to get the values of Coupling Coefficient and Isolation of magic tee.
+     </div>
+     <div class="carousel-item ">
+                  
+      Click on 'Print' button to print your current page (readings and connections) or to save your page (readings and connections) in a PDF form.
+     </div>
+     
+          </div>
+          <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+           
+        </a>
+          <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              
+          </a>
+      </div>
+  </div>
+    
+    <div  id="gg"  ondragover="allowDrop(event)">
+      <table id="images1">
+        <tr>
+          <td id="headingg1" >
+            <h2 style="margin-bottom: 1px; padding-left: 60px;">
+              READINGS
+            </h2>
+            
+          </td>
+         
+
+        </tr>
+            
+          <tr> <td style="padding-left: 4px; ">
+            <hr style="width: 170px;">
+          </td></tr>
+         <tr>
+           <td style="padding-left: 10px; ">
+             Click on Add to table to add on the value for P3.
+           </td>
+         </tr>
+        
+         <tr>
+           <td  >
+             <div >
+      <table id="readin"  >
+        <tr>
+          <tr>
+            <td >
+              P1:
+            </td>
+            <td id="one">
+
+            </td>
+            <td>
+              dB
+            </td>
+           
+          </tr>
+          <tr>
+            <td>
+              P2:
+
+            </td>
+            <td id="two">
+
+            </td>
+            <td>
+              dB
+            </td>
+          </tr>
+          <tr>
+            <td>
+              P3:
+            </td>
+            <td id="three">
+
+            </td>
+            <td>
+              dB
+            </td>
+          </tr>
+        </tr>
+        
+      </table>
+    </div>
+      </td>
+
+    </tr>
+    <tr>
+      <td style="padding-left: 10px; ">
+        Note down the readings for P3 using VSWR Meter.
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <table id="readin1">
+        
+        <tr>
+          <td>
+            P3:
+
+          </td>
+         <td >
+           <input  id="V4"  >
+         </td>
+<td>
+ dB
+</td>
+        </tr>
+        <tr>
+          <td>
+            Beam Voltage:
+
+          </td>
+          <td id="beam">
+            
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            Reflector Voltage:
+          </td>
+          <td id="reflector">
+           
+          </td>
+        </td>
+        </tr>
+      </table>
+    
+    </td>
+    </tr>
+<tr>
+          <td>
+              <table>
+                  <tr>
+                      <td>
+                        <button id="add" onclick="validate()">Add To Table</button>
+                      </td>
+                      <td>
+                          <button id="ccccc" disabled onclick="calculate()">Calculate</button>
+                      </td>
+                  </tr>
+              </table>
+
+             
+            
+          </td>
+        </tr>
+        <tr>
+          <td>
+           <table id="readin2">
+             <tr>
+               <td style="white-space: nowrap;">
+               <B>  Coupling Coefficient: </B>
+               </td>
+
+             </tr>
+             <tr>
+               <td id="coupling1" >
+                 P1-P3 =
+               </td>
+              <td id="coupling">
+                  
+              </td>
+              <td>
+                dB
+              </td>
+             </tr>
+             <tr>
+               <td >
+               <B>  Isolation: </B>
+               </td>
+
+             </tr>
+             <tr>
+               <td id="directivity1">
+                P1-P2 =
+               </td>
+               <td id="directivity">
+                  
+              </td>
+              <td>
+                dB
+              </td>
+             </tr>
+           </table>
+          </td>
+        </tr>
+        </table>
+      
+        <table id="images">
+          <tr>
+            <td id="comp" >
+              <h2 id="headingg">
+                COMPONENTS
+              </h2>
+              <hr >
+            </td>
+          </tr>
+              
+            <tr>
+          <td>
+    
+          <table id="ctab">
+            <tr>
+              <td style="padding-left: 30px;" >
+                <img id="drag6" src="images/matchedt - Copy.png" draggable="true" ondragstart="drag(event)" width="70"
+                height="28" data-div="div6">
+                <img id="drag6s" src="images/matchedt - Copy.png" width= "70" style="display: none;" >
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+               Detector Mount
+              </td>
+            </tr>
+             
+          
+    
+              <td style="padding-left: 30px;">
+                <img id="drag0" src="images/matched.png" draggable="true" ondragstart="drag(event)" width="30"
+                height="70">
+                <img id="drag9" src="images/matched.png" draggable="true" ondragstart="drag(event)" width="30"
+                height="70">
+                <img id="drag0s" src="images/matched.png" height="70" width="30" style="display: none;">
+                <img id="drag9s" src="images/matched.png" height="70" width="30" style="display: none;">
+              </td>
+            </tr>
+            <tr>
+              <td class="imgr">
+                Matched Terminator
+              </td>
+            </tr>
+           
+           
+                <td style="padding-left: 30px;" >
+                  <img id="drag4" src="images/magic tee.png" draggable="true" ondragstart="drag(event)" width="70"
+                  height="50" data-div="div4">
+                  <img id="drag4s" src="images/magic tee.png" width="60" style="display: none;" >
+                </td>
+              </tr>
+              
+              <tr>
+                <td class="imgr">
+                 Magic Tee
+                </td>
+              </tr>
+              <tr>
+       
+          </table>
+           </td>
+            </tr>       </table>
+    </div>
+   
+
+
+  <div class="exp">
+  <table>
+
+  <tr> <td>
+    
+  
+  
+    <div id="div0" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+    <div id="div9" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+    <div id="div4" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+    <div id="div6" ondrop="drop(event,this)" ondragover="allowDrop(event)"></div>
+    <div id="con" class="jtk-demo-main">
+      <!-- demo -->
+     <div class="jtk-demo-canvas canvas-wide animation-demo jtk-surface jtk-surface-nopan" id="canvas">
+         <div class="littledot" id="ld1"><label style="position:absolute;top:-22px;left: -1em;">A</label></div>
+         <div class="littledot" id="ld2">B </div>
+         <div class="littledot" id="ld4">D </div>
+         <div class="littledot" id="ld5">E </div>
+     </div>
+     
+  </div>
+    <div id="stand">
+  <img id="div1" src="images/klystron mount.png">
+  <img id="div2" src="images/isolator.png">
+  <img id="div3" src="images/attenuator.png">
+     <img id="block1" src="images/block4.jpg">
+     <img id="block2" src="images/block4.jpg">
+     <img id="block3" src="images/block4.jpg">
+     <img id="block4" src="images/block4.jpg">
+     
+      <img id="drag0" src="images/stand.png" width="500" >
+    </div>
+    <div id="table55">
+  
+  
+  
+      <img id="aa" src="images/table.png " width="1000" height="100" >
+    </div>
+    <h4 id="vv">
+      To Record the Value for P3
+    </h4>
+ 
+    <div id="space3">
+      <img id="croii" src="images/vswr.png">
+      <h4 id="volt1">
+        <table><tr>
+          <td>VSWR Meter Reading(digital):</td> <td id="powerr"></td> <td>dB</td>
+        </tr></table>
+      
+      </h4>
+        </div>
+   
+      <div id="chartdiv"></div>
+    <div id="powersupply">
+          
+      <table>
+       
+          
+            <tr>
+            
+
+              <h2 class="heading5">Klystron power supply</h2>
+            </tr>
+            <tr>
+            
+              <div class="exampleContainer exampleInput">
+                <div id="aaaa" data-bind="sevenSeg: {digits: 6, value:testValue2 }"></div>
+              </div>
+              
+
+           
+          </tr>
+          
+       
+        <tr>
+          <h6 id="name">  Beam Voltage</h6>
+            <label class="switch" >
+                
+              <input disabled type="checkbox" onclick="myFunction()" id="cch">
+             
+         <span class="slider round">   </span>
+        
+        
+        </tr>
+        
+          <tr class="mainknob">
+            <td></td>
+              <td id="voltage">
+                
+                <h4 class="heading4">Beam Voltage</h4>
+                  
+                
+                <div id="jog_dial_one">
+                  
+                </div>
+                
+               
+                  <div id="jog_dial_one_meter_inner1"></div>
+                
+              
+              </td>
+        
+              <td id="voltage">
+               
+                <h4 class="heading4">Reflector Voltage</h4> 
+                
+                
+                <div id="jog_dial_two"></div>
+                
+                  <div id="jog_dial_two_meter_inner1"></div>
+              </td>
+          </tr>
+              <tr>
+                <td id="voltage1"> 
+              
+                  
+                  <h5 class="heading4">Amplitude</h5>
+                
+                <div id="jog_dial_3"></div>
+                
+                <div id="jog_dial_3_meter_inner1"></div>
+                
+            </td>
+            <td id="voltage1">
+                
+                  <h5 class="heading4">Frequency</h5>
+                
+                <div id="jog_dial_4"></div>
+                
+                <div id="jog_dial_4_meter_inner1"></div>
+              
+              </td>
+           
+             
+                <td id="voltage1">
+                  <h5 class="heading4">Amplitude</h5>
+               
+                <div id="jog_dial_5"></div>
+                
+                <div id="jog_dial_5_meter_inner1"></div>
+              
+              </td>
+                <td id="voltage1">
+                  <h5 class="heading4">Frequency</h5>
+                
+                <div id="jog_dial_6"></div>
+               
+                <div id="jog_dial_6_meter_inner1"></div>
+                </td>
+              </tr>
+                </table>
+   
+
+  </div>
+  </td>
+</tr>
+<div id="rom">
+  <img id="rom1"src="images/empty-room-with-white-brick-walls-studio_107791-1349.jpg" style="max-width: 1000;">
+</div>  
+      
+      </table>
+ 
+        <div id="but">
+          <button id="check" onclick="appear()">Components</button>
+          <button id="check11" disabled>Check Connections</button>
+          <button id="manual"  onclick="shows()">Experiment setup</button>
+          <button id="print" disabled onclick="print()">Print</button>
+          <button id="reset" onclick="reset()">Reset</button>
+        </div>
+        <div id="prop" style="position: relative; top:70px; left:100px; ">
+          
+       
+          <table  border="2px" style=" visibility: none;">
+            
+            <tr>  <input  value="0" id="P1" onclick="cal()" >&nbsp;<output></output></td></tr>
+            
+            
+            <tr><input  value="9.4" id="P2" onclick="cal()" >
+              &nbsp; <output></output>&nbsp;GHz</td></tr>
+            
+            
+            <tr><td> <input value="90" id="P3" onclick="cal()">
+              &nbsp; <output></output><sup>o</sup></td></tr>
+            
+            
+            </table>
+            
+              <div>
+      </div>
+      
+    
+  </tr>
+
+ 
+
+</table>
+</div></div>
+<footer class="main-footer">
+  <div align="center" style="font-size: 20px;font-weight: bold;">© 2023 Virtual Labs, IIT Roorkee</div>
+</footer>
+</body>
+
+<script src="js/JogDial3.js"></script>
+<script src="js/jsplumb1.js"></script>
+<!-- /JS -->
+
+<!--  demo code -->
+<script src="js/demo3.js"></script>
+</html>
