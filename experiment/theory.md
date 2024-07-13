@@ -15,9 +15,7 @@ The Magic Tee is a four-port device & it is a combination of the E & H plane Tee
 1.  Isolation: The isolation between E and H arms is defined as the ratio of the power supplied by the generator connected to the E-arm (port 4) to the power detected at H-arm (port 3) when side arms 1 and 2 are terminated in matched load.  
     Hence,  
 
-$$
-Isolation (3-4) = {10log_{10}} \frac{P4}{P3}
-$$
+$ Isolation (3-4) = {10log_{10}} \frac{P4}{P3}  $
   
 2.  Coupling Coefficient: It is defined as 
 
