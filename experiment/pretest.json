@@ -1,0 +1,5 @@
+[{"question":"A Magic–Tee is nothing but","answers":{"a":"Modification of E-Plane tee","b":"Modification of H-Plane tee","c":"Combination of E-plane & H-plane","d":"Two E-plane tees connected in parallel"},"correctAnswer":"c"},
+{"question":"Which of the following is wrong for a magic used to tee","answers":{"a":"A signal into coplanar arm splits equally between E and H arms","b":"coplanar arms are coupled","c":"all ports are perfectly matched","d":"E and H arms are decoupled"},"correctAnswer":"b"},
+{"question":"What is the other name for Magic-Tee?","answers":{"a":"Hybrid Tee","b":"E Plane Tee","c":"H Plane Tee","d":"Rat Race Tee"},"correctAnswer":"a"},
+{"question":"A Tee connector used with waveguides is:","answers":{"a":"an H-plane Tee","b":"a magic Tee","c":"an E-plane Tee","d":"all of the above"},"correctAnswer":"d"},
+{"question":"When two signals of equal magnitude are fed from port 1 and 2, we get a zero at","answers":{"a":"Port 2","b":"Port 3","c":"Port 4","d":"None of the above"},"correctAnswer":"b"}]
