@@ -367,28 +367,34 @@ var d = 0;
   
       // mouseDownEvent (MOUSE_DOWN)
       function mouseDownEvent(e) {
-        switch (opt.touchMode) {
-          case 'knob':
-          default:
-            self.pressed = JogDial.utils.checkBoxCollision({
-              x1: K.offsetLeft - W.offsetLeft,
-              y1: K.offsetTop - W.offsetTop,
-              x2: K.offsetLeft - W.offsetLeft + K.clientWidth,
-              y2:  K.offsetTop - W.offsetTop + K.clientHeight
-              }, JogDial.utils.getCoordinates(e));
-            break;
-          case 'wheel':
-            self.pressed = true;
-            mouseDragEvent(e);
-            break;
+        if(knobFlag)
+        {
+          switch (opt.touchMode) {
+            case 'knob':
+            default:
+              self.pressed = JogDial.utils.checkBoxCollision({
+                x1: K.offsetLeft - W.offsetLeft,
+                y1: K.offsetTop - W.offsetTop,
+                x2: K.offsetLeft - W.offsetLeft + K.clientWidth,
+                y2:  K.offsetTop - W.offsetTop + K.clientHeight
+                }, JogDial.utils.getCoordinates(e));
+              break;
+            case 'wheel':
+              self.pressed = true;
+              mouseDragEvent(e);
+              break;
+          }
+    
+          //Trigger down event
+          if(self.pressed) JogDial.utils.triggerEvent(self.knob, JogDial.CustomEvent.MOUSE_DOWN);
         }
-  
-        //Trigger down event
-        if(self.pressed) JogDial.utils.triggerEvent(self.knob, JogDial.CustomEvent.MOUSE_DOWN);
+        
       };
   
       // mouseDragEvent (MOUSE_MOVE)
       function mouseDragEvent(e) {
+        if(knobFlag)
+          {
         if (self.pressed) {
           // Prevent default event
           (e.preventDefault) ? e.preventDefault() : e.returnValue = false; 
@@ -439,21 +445,26 @@ var d = 0;
           // update angle
           angleTo(self, radian);        
         }
+      }
       };
   
       // mouseDragEvent (MOUSE_UP, MOUSE_OUT)
       function mouseUpEvent() {
-        if(self.pressed){
-          self.pressed = false;        
-          if(self.info.snapshot.direction != null){
-            self.info.now = JogDial.utils.extend({},info.snapshot.now);
-            self.info.old = JogDial.utils.extend({},info.snapshot.old);
-            self.info.snapshot.direction = null;
+        if(knobFlag)
+          {
+            if(self.pressed){
+              self.pressed = false;        
+              if(self.info.snapshot.direction != null){
+                self.info.now = JogDial.utils.extend({},info.snapshot.now);
+                self.info.old = JogDial.utils.extend({},info.snapshot.old);
+                self.info.snapshot.direction = null;
+              }
+      
+              // Trigger up event
+              JogDial.utils.triggerEvent(self.knob, JogDial.CustomEvent.MOUSE_UP);
+            }
           }
-  
-          // Trigger up event
-          JogDial.utils.triggerEvent(self.knob, JogDial.CustomEvent.MOUSE_UP);
-        }
+       
       };
     };
   
@@ -518,7 +529,7 @@ var d = 0;
  var bar = document.getElementById('hh');
  
       var dialOne = JogDial(document.getElementById('jog_dial_one'), 
-                          {debug:false, wheelSize:'90%', knobSize:'10px', minDegree:200, maxDegree:450, degreeStartAt: 200})
+                          {debug:false, wheelSize:'90%',zIndex:1000, knobSize:'10px', minDegree:200, maxDegree:450, degreeStartAt: 200})
           .on('mousemove', function(evt){
             a=Math.round((evt.target.rotation))
             if( cc.checked==false){
@@ -530,7 +541,7 @@ var d = 0;
                });	
    var bar1 = document.getElementById('jog_dial_two_meter_inner1');   
           var dialtwo = JogDial(document.getElementById('jog_dial_two'), 
-                              {debug:false, wheelSize:'90%', knobSize:'8px', minDegree:118 , maxDegree:270, degreeStartAt: 118})
+                              {debug:false, wheelSize:'90%', zIndex:1000,knobSize:'10px', minDegree:118 , maxDegree:270, degreeStartAt: 118})
               .on('mousemove', function(evt){ 
 
                 b= Math.round((evt.target.rotation))
@@ -603,20 +614,20 @@ var d = 0;
               });
               var bar2 = document.getElementById('jog_dial_3_meter_inner1');  
           var dial3 = JogDial(document.getElementById('jog_dial_3'), 
-                              {debug:false, wheelSize:'90%', knobSize:'6px', minDegree:100, maxDegree:100, degreeStartAt: 100})
+                              {debug:false, wheelSize:'90%', zIndex:1000,knobSize:'6px', minDegree:100, maxDegree:100, degreeStartAt: 100})
              
               var bar3 = document.getElementById('jog_dial_4_meter_inner1');  
           var dial4 = JogDial(document.getElementById('jog_dial_4'), 
-                              {debug:false, wheelSize:'90%', knobSize:'6px', minDegree:100, maxDegree:100, degreeStartAt: 100})
+                              {debug:false, wheelSize:'90%', zIndex:1000,knobSize:'6px', minDegree:100, maxDegree:100, degreeStartAt: 100})
               
 
               var bar4 = document.getElementById('jog_dial_5_meter_inner1');  
               var dial5 = JogDial(document.getElementById('jog_dial_5'), 
-                                  {debug:false, wheelSize:'90%', knobSize:'6px', minDegree:340, maxDegree:340, degreeStartAt: 340})
+                                  {debug:false, wheelSize:'90%',zIndex:1000, knobSize:'6px', minDegree:340, maxDegree:340, degreeStartAt: 340})
                   
                   var bar5 = document.getElementById('jog_dial_6_meter_inner1');  
           var dial6 = JogDial(document.getElementById('jog_dial_6'), 
-                              {debug:false, wheelSize:'90%', knobSize:'6px', minDegree:120, maxDegree:120, degreeStartAt: 120})
+                              {debug:false, wheelSize:'90%',zIndex:1000, knobSize:'6px', minDegree:120, maxDegree:120, degreeStartAt: 120})
              			
 
     
@@ -687,7 +698,7 @@ function validate() {
        container: 'position-absolute',
        popup:"swal2-popup"
      },
-     text:'Toggle the switch buttton and move the knob of reflector voltage for some values.',     
+     text:'Toggle the switch button and move the knob of reflector voltage for some values.',     
      icon:'warning',
      });
   }
@@ -726,8 +737,8 @@ function validate() {
  var c = (v1)
  
 document.getElementById('one').innerText =c
-document.getElementById('beam').innerText=a,
-document.getElementById('reflector').innerText=b
+document.getElementById('beam').innerText=a+' V',
+document.getElementById('reflector').innerText=b+' V';
 
 localStorage.setItem("Beam",a)
 localStorage.setItem("Reflector",b)

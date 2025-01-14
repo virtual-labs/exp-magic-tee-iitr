@@ -2,15 +2,15 @@
 #### Please attempt the following questions
 
 
-Q1. In a microwave Magic-Tee, E-plane and H-plane are \_\_\_\_\_\_.<br>
+Q1. In a Magic Tee, how many ports are there?<br>
 
-A   in phase  
-<b>B   out of phase</b>  
-C   isolated  
-D   None    
+A   Two  
+B   Three  
+<b>C   Four</b>  
+D   Five    
 <br>
 
-Q2. Which device can detect the presence of both forward and backward waves in a wave guide \_\_\_\_\_\_.<br>
+Q2. Which device can detect the presence of both forward and backward waves in a wave guide___________.<br>
 
 A   filter    
 B   detector  
@@ -18,15 +18,22 @@ B   detector
 D   magic Tee  
 <br>
 
-Q3. What is the other name for Magic-Tee?<br>
-  
-<b>A   Hybrid Tee</b>    
-B   E Plane Tee  
-C   H Plane Tee  
-D   Rat Race Tee    
+Q3. Consider the following statements about a magic tee:  
+1.  The collinear arms are isolated from each other.  
+2.  On of the collinear arms is isolated from E arm.  
+3.  On of the collinear arms is isolated from H arm.  
+4.  E and H arms are isolated from each other.  
+
+Which of these statements are correct? 
 <br>
 
-Q4. A reflex Klystron fuctions as<br>
+A   1 and 2 are correct   
+B   1 and 3 are correct   
+<b>C   1 and 4 are correct</b>  
+D   2 and 3 are correct  
+<br>
+
+Q4. A reflex Klystron functions as<br>
  
 <b>A   Microwave oscillator</b>  
 B   Microwave amplifier  

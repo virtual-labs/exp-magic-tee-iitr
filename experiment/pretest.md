@@ -13,27 +13,20 @@ D   Two E-plane tees connected in parallel
 
 Q2. Which of the following is wrong for a magic used to tee<br>
 
-A   A signal into coplanar arm splits equally between Eand H arms  
+A   A signal into coplanar arm splits equally between E and H arms  
 <b>B   coplanar arms are coupled</b>  
 C   all ports are perfectly matched  
 D   E and H arms are decoupled  
 <br>
 
 
-Q3. Consider the following statements about a magic tee  
-1.  The collinear arms are isolated from each other.  
-2.  On of the collinear arms is isolated from E arm.  
-3.  On of the collinear arms is isolated from H arm.  
-4.  E and H arms are isolated from each other.  
-
-Which of these statements are correct? 
-<br>
-
-A   1 and 2 are correct   
-B   1 and 3 are correct   
-<b>C   1 and 4 are correct</b>  
-D   2 and 3 are correct  
-<br>  
+Q3. What is the other name for Magic-Tee?<br>
+  
+<b>A   Hybrid Tee</b>    
+B   E Plane Tee  
+C   H Plane Tee  
+D   Rat Race Tee    
+<br> 
 
 
 Q4. A Tee connector used with waveguides is:<br>

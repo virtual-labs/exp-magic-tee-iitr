@@ -1,5 +1,6 @@
 var rightconnection=false;
 var datapoints1 = [];
+var knobFlag=false;
 jsPlumb.ready(function () {
 
     var instance,
@@ -221,11 +222,15 @@ document.getElementById("check11").addEventListener("click", function () {
               container: 'position-absolute',
               popup:"swal2-popup"
             },
-            title:"Good Job",      
-            text:"Correct Connection",
-            icon:'success',
-            });
+            title:"Correct Connection",      
+                text:"Connection established",
+                icon:'success',
+                });
             
+                knobFlag=true;
+                document.getElementById('jog_dial_one').style.cursor='pointer';
+                document.getElementById('jog_dial_two').style.cursor='pointer';
+                
             document.getElementById("name").style.visibility = "visible";
          document.getElementById("cch").disabled= false;
          document.getElementById("check11").disabled= true;
@@ -234,10 +239,10 @@ document.getElementById("check11").addEventListener("click", function () {
             document.getElementById("images").style.visibility= "hidden";
             document.getElementById("images").style.display= "none";
             document.getElementById("images1").style.visibility= "visible";
-            document.getElementById("beam").innerText= localStorage.getItem("Beam")
+            document.getElementById("beam").innerText= localStorage.getItem("Beam")+' V';
             document.getElementById("one").innerText= localStorage.getItem("V1")
             document.getElementById("two").innerText= localStorage.getItem("V2")
-            document.getElementById("reflector").innerText= localStorage.getItem("Reflector")
+            document.getElementById("reflector").innerText= localStorage.getItem("Reflector")+' V';
             document.getElementById("images1").style.opacity= "1";
             document.getElementById("images1").style.display= "block";
            
