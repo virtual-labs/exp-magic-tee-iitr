@@ -1,0 +1,7 @@
+[{"question":"In a Magic Tee, how many ports are there?","answers":{"a":"Two","b":"Three","c":"Four","d":"Five"},"correctAnswer":"c"},
+{"question":"Which device can detect the presence of both forward and backward waves in a wave guide ______.","answers":{"a":"filter","b":"detector","c":"directional coupler","d":"magic Tee"},"correctAnswer":"c"},
+{"question":"Consider the following statements about a magic tee: \n1.  The collinear arms are isolated from each other.\n 2.  On of the collinear arms is isolated from E arm.\n 3.  On of the collinear arms is isolated from H arm.\n4.  E and H arms are isolated from each other.\n Which of these statements are correct?","answers":{"a":"1 and 2 are correct","b":"1 and 3 are correct","c":"1 and 4 are correct","d":"2 and 3 are correct"},"correctAnswer":"c"},
+{"question":"A reflex Klystron functions as","answers":{"a":"Microwave oscillator","b":"Microwave amplifier","c":"Both as Microwave amplifier and oscillator","d":"A high gain cavity"},"correctAnswer":"a"},
+{"question":"Which one of the following is also called 'rat race'?","answers":{"a":"E plane tee","b":"H plane tee","c":"Magic tee","d":"Hybrid ring"},"correctAnswer":"d"}]
+
+
