@@ -1,5 +1,0 @@
-[{"question":"In a microwave Magic-Tee, E-plane and H-plane are ______.","answers":{"a":"in phase","b":"out of phase","c":"isolated","d":"None"},"correctAnswer":"b"},
-{"question":"Which device can detect the presence of both forward and backward waves in a wave guide ______.","answers":{"a":"filter","b":"detector","c":"directional coupler","d":"magic Tee"},"correctAnswer":"c"},
-{"question":"What is the other name for Magic-Tee?","answers":{"a":"Hybrid Tee","b":"E Plane Tee","c":"H Plane Tee","d":"Rat Race Tee"},"correctAnswer":"a"},
-{"question":"A reflex Klystron fuctions as","answers":{"a":"Microwave oscillator","b":"Microwave amplifier","c":"Both as Microwave amplifier and oscillator","d":"A high gain cavity"},"correctAnswer":"a"},
-{"question":"Which one of the following is also called 'rat race'?","answers":{"a":"E plane tee","b":"H plane tee","c":"Magic tee","d":"Hybrid ring"},"correctAnswer":"d"}]
