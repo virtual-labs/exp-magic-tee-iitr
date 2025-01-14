@@ -1,2 +1,2 @@
 
-####  To study the properties of a magic tee and determining the scattering parameters.
+####  To study the Properties of Magic Tee and Determine the Scattering Parameters of Magic.

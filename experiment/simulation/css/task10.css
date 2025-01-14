@@ -188,8 +188,6 @@ transition:all 1s ease-in-out;
 } 
 
 
-
-
 p {
 font-family: Helvetica, Arial, Sans-serif;
 text-align: center;
@@ -198,8 +196,8 @@ color: #0f69cd;
 
 #jog_dial_one,#jog_dial_two {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   margin: 5px auto;
   background: #0f69cd;
   -webkit-border-radius: 150px;
@@ -207,6 +205,7 @@ color: #0f69cd;
   -ms-border-radius: 150px;
   -o-border-radius: 150px;
   border-radius: 150px;
+  cursor:not-allowed;
 } 
 #jog_dial_3,#jog_dial_4,#jog_dial_5,#jog_dial_6{
   position: relative;
